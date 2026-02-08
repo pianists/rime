@@ -1,3 +1,3 @@
 fn main() {
-    println!("Hello, world!");
+    println!("Rime is a functional programming language!");
 }
