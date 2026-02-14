@@ -1,10 +1,21 @@
-use std::{marker::PhantomData, ops::{Index, IndexMut}};
+use std::{
+    marker::PhantomData,
+    ops::{Index, IndexMut}
+};
 
-#[derive(Debug, PartialEq, Eq, Hash, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub struct Id<T> {
     index: usize,
     _marker: PhantomData<fn() -> T>,
 }
+
+impl<T> Clone for Id<T> {
+    fn clone(&self) -> Self {
+        *self
+    }
+}
+
+impl<T> Copy for Id<T> { }
 
 impl<T> Id<T> {
     pub fn new(index: usize) -> Self {
