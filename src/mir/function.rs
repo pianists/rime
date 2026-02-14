@@ -1,4 +1,6 @@
-use super::types::{AdtId, FuncId, Type, VariantId};
+use crate::util::id_coll::Id;
+
+use super::{adt::{Adt, Variant}, types::Type};
 
 pub struct VarId(pub usize);
 
@@ -20,13 +22,13 @@ pub struct ALet {
 }
 
 pub enum ACommand {
-    NewAdt { adt: AdtId, variant: VariantId, args: Vec<VarId> },
-    Call { function: FuncId, args: Vec<VarId> },
+    NewAdt { adt: Id<Adt>, variant: Id<Variant>, args: Vec<VarId> },
+    Call { function: Id<Function>, args: Vec<VarId> },
     Match { var: VarId, cases: Vec<Case> },
 }
 
 pub struct Case {
-    pub variant: VariantId,
+    pub variant: Id<Variant>,
     pub bindings: Vec<VarId>,
     pub ret: VarId,
 }

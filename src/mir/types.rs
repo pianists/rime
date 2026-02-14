@@ -1,10 +1,8 @@
-pub struct AdtId(pub usize);
+use crate::util::id_coll::Id;
 
-pub struct VariantId(pub usize);
-
-pub struct FuncId(pub usize);
+use super::{adt::Adt, function::Function};
 
 pub enum Type {
-    Adt { id: AdtId, type_args: Vec<Type> },
-    Function { id: FuncId, type_args: Vec<Type> },
+    Adt { id: Id<Adt>, type_args: Vec<Type> },
+    Function { id: Id<Function>, type_args: Vec<Type> },
 }
