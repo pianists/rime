@@ -6,6 +6,7 @@ pub struct VarId(pub usize);
 
 pub struct Function {
     pub name: String,
+    pub captures: Vec<(VarId, Type)>,
     pub args: Vec<(VarId, Type)>,
     pub ret_type: Type,
     pub body: AExpr,
@@ -23,7 +24,9 @@ pub struct ALet {
 
 pub enum ACommand {
     NewAdt { adt: Id<Adt>, variant: Id<Variant>, args: Vec<VarId> },
+    MakeClosure { function: Id<Function>, env: Vec<VarId> },
     Call { function: Id<Function>, args: Vec<VarId> },
+    CallClosure { closure: VarId, args: Vec<VarId> },
     Match { var: VarId, cases: Vec<Case> },
 }
 
