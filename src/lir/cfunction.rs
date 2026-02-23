@@ -35,7 +35,7 @@ pub struct SwitchCase {
 pub enum RhsExpr {
     Var(CVarId),
     Call { function: Id<CFunction>, args: Vec<CVarId> },
-    CallClosure { closure: Id<CVarId>, args: Vec<CVarId> },
+    CallClosure { closure: CVarId, args: Vec<CVarId> },
     ConsTaggedUnion { ty: Id<TaggedUnion>, variant: Id<Struct>, args: Vec<CVarId> },
     ConsClosure { function: Id<CFunction>, env_vars: Vec<CVarId> },
 }
