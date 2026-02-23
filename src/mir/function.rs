@@ -27,7 +27,7 @@ pub enum ACommand {
     MakeClosure { function: Id<Function>, env: Vec<VarId> },
     Call { function: Id<Function>, args: Vec<VarId> },
     CallClosure { closure: VarId, args: Vec<VarId> },
-    Match { var: VarId, cases: Vec<Case> },
+    Match { scrutinee: VarId, cases: Vec<Case> },
 }
 
 pub struct Case {
